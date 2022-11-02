@@ -16,6 +16,7 @@
 		95BE6B4E291306B0002B4EA6 /* ArithmeticOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE6B4D291306B0002B4EA6 /* ArithmeticOperations.swift */; };
 		95BE6B5229131416002B4EA6 /* CalculatorButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE6B5129131416002B4EA6 /* CalculatorButtonStyle.swift */; };
 		95BE6B55291318C6002B4EA6 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE6B54291318C6002B4EA6 /* CalculatorButton.swift */; };
+		95BE6B5729131BA4002B4EA6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE6B5629131BA4002B4EA6 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		95BE6B4D291306B0002B4EA6 /* ArithmeticOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticOperations.swift; sourceTree = "<group>"; };
 		95BE6B5129131416002B4EA6 /* CalculatorButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonStyle.swift; sourceTree = "<group>"; };
 		95BE6B54291318C6002B4EA6 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
+		95BE6B5629131BA4002B4EA6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				95BE6B372912C9E5002B4EA6 /* CalculatorSwiftUIApp.swift */,
+				95BE6B5629131BA4002B4EA6 /* Constants.swift */,
 				95BE6B50291313E0002B4EA6 /* Styles */,
 				95BE6B4A29130625002B4EA6 /* Views */,
 				95BE6B4929130616002B4EA6 /* Models */,
@@ -191,6 +194,7 @@
 				95BE6B5229131416002B4EA6 /* CalculatorButtonStyle.swift in Sources */,
 				95BE6B382912C9E5002B4EA6 /* CalculatorSwiftUIApp.swift in Sources */,
 				95BE6B4C29130699002B4EA6 /* Digits.swift in Sources */,
+				95BE6B5729131BA4002B4EA6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
