@@ -20,7 +20,7 @@ enum ArithmeticOperations: CaseIterable, CustomStringConvertible {
         case .multiplication:
             return "*"
         case .division:
-            return "/"
+            return "÷"
         }
     }
 }

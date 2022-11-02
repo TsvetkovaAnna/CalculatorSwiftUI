@@ -14,6 +14,8 @@
 		95BE6B48291304E7002B4EA6 /* ButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE6B47291304E6002B4EA6 /* ButtonType.swift */; };
 		95BE6B4C29130699002B4EA6 /* Digits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE6B4B29130699002B4EA6 /* Digits.swift */; };
 		95BE6B4E291306B0002B4EA6 /* ArithmeticOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE6B4D291306B0002B4EA6 /* ArithmeticOperations.swift */; };
+		95BE6B5229131416002B4EA6 /* CalculatorButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE6B5129131416002B4EA6 /* CalculatorButtonStyle.swift */; };
+		95BE6B55291318C6002B4EA6 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE6B54291318C6002B4EA6 /* CalculatorButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		95BE6B47291304E6002B4EA6 /* ButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonType.swift; sourceTree = "<group>"; };
 		95BE6B4B29130699002B4EA6 /* Digits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Digits.swift; sourceTree = "<group>"; };
 		95BE6B4D291306B0002B4EA6 /* ArithmeticOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticOperations.swift; sourceTree = "<group>"; };
+		95BE6B5129131416002B4EA6 /* CalculatorButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonStyle.swift; sourceTree = "<group>"; };
+		95BE6B54291318C6002B4EA6 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				95BE6B372912C9E5002B4EA6 /* CalculatorSwiftUIApp.swift */,
+				95BE6B50291313E0002B4EA6 /* Styles */,
 				95BE6B4A29130625002B4EA6 /* Views */,
 				95BE6B4929130616002B4EA6 /* Models */,
 				95BE6B3B2912C9F5002B4EA6 /* Assets.xcassets */,
@@ -87,9 +92,26 @@
 		95BE6B4A29130625002B4EA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				95BE6B53291318A0002B4EA6 /* Components */,
 				95BE6B452912CA32002B4EA6 /* CalculatorView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		95BE6B50291313E0002B4EA6 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				95BE6B5129131416002B4EA6 /* CalculatorButtonStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		95BE6B53291318A0002B4EA6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				95BE6B54291318C6002B4EA6 /* CalculatorButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,8 +185,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				95BE6B462912CA32002B4EA6 /* CalculatorView.swift in Sources */,
+				95BE6B55291318C6002B4EA6 /* CalculatorButton.swift in Sources */,
 				95BE6B4E291306B0002B4EA6 /* ArithmeticOperations.swift in Sources */,
 				95BE6B48291304E7002B4EA6 /* ButtonType.swift in Sources */,
+				95BE6B5229131416002B4EA6 /* CalculatorButtonStyle.swift in Sources */,
 				95BE6B382912C9E5002B4EA6 /* CalculatorSwiftUIApp.swift in Sources */,
 				95BE6B4C29130699002B4EA6 /* Digits.swift in Sources */,
 			);
