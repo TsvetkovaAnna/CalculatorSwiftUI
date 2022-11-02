@@ -18,7 +18,7 @@ enum ArithmeticOperations: CaseIterable, CustomStringConvertible {
         case .subtracting:
             return "-"
         case .multiplication:
-            return "*"
+            return "×"
         case .division:
             return "÷"
         }
