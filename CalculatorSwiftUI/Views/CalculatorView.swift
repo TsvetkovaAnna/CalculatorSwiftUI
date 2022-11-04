@@ -9,12 +9,14 @@ import SwiftUI
 
 struct CalculatorView: View {
     
-    var buttonTypes: [[ButtonType]] =
-    [[.allClear, .negative, .percent, .operation(operation: .division)],
-     [.digit(digit: .seven), .digit(digit: .eight), .digit(digit: .nine), .operation(operation: .multiplication)],
-     [.digit(digit: .four), .digit(digit: .five), .digit(digit: .six), .operation(operation: .subtracting)],
-     [.digit(digit: .one), .digit(digit: .two), .digit(digit: .three), .operation(operation: .addition)],
-     [.digit(digit: .zero), .decimal, .equals]]
+    @EnvironmentObject private var viewModel: ViewModel
+    
+//    var buttonTypes: [[ButtonType]] =
+//    [[.allClear, .negative, .percent, .operation(operation: .division)],
+//     [.digit(digit: .seven), .digit(digit: .eight), .digit(digit: .nine), .operation(operation: .multiplication)],
+//     [.digit(digit: .four), .digit(digit: .five), .digit(digit: .six), .operation(operation: .subtracting)],
+//     [.digit(digit: .one), .digit(digit: .two), .digit(digit: .three), .operation(operation: .addition)],
+//     [.digit(digit: .zero), .decimal, .equals]]
     
     var body: some View {
         VStack {
@@ -35,7 +37,7 @@ struct CalculatorView_Previews: PreviewProvider {
 
 extension CalculatorView {
     private var displayText: some View {
-        Text("0")
+        Text(viewModel.displayText)
             .padding()
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, alignment: .trailing)
@@ -46,7 +48,7 @@ extension CalculatorView {
     
     private var buttonPad: some View {
         VStack(spacing: Constants.padding) {
-            ForEach(buttonTypes, id: \.self) { row in
+            ForEach(viewModel.buttonTypes, id: \.self) { row in
                 HStack(spacing: Constants.padding) {
                     ForEach(row, id: \.self) { buttonType in
                        CalculatorButton(buttonType: buttonType)
