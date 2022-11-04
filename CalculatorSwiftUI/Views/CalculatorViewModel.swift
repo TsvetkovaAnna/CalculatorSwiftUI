@@ -49,6 +49,11 @@ extension CalculatorView {
             }
         }
         
+        //MARK: - Helpers
         
+        func buttonTypeIsHighlighted(buttonType: ButtonType) -> Bool {
+            guard case .operation(let operation) = buttonType else  { return false }
+            return calculator.operationIsHighlighted(operation: operation)
+        }
     }
 }
