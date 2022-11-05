@@ -13,7 +13,7 @@ struct Calculator {
         var number: Decimal
         var operation: ArithmeticOperations
         
-        func evaluate(With secondNumber: Decimal) -> Decimal {
+        func evaluate(with secondNumber: Decimal) -> Decimal {
             switch operation {
             case .addition:
                 return number + secondNumber
@@ -29,9 +29,15 @@ struct Calculator {
     
     //MARK: - Properties
     
-    private var newNumber: Decimal?
+    private var newNumber: Decimal? {
+        didSet {
+            guard newNumber != nil else { return }
+            carryingNegative = false
+        }
+    }
     private var expression: ArithmeticExpression?
     private var result: Decimal?
+    private var carryingNegative = false
     
     //MARK: - Computed Properties
     
@@ -56,17 +62,33 @@ struct Calculator {
     mutating func setOperation(operation: ArithmeticOperations) {
         guard var number = newNumber ?? result else { return }
         if let existingExpression = expression {
-            number = existingExpression.evaluate(With: number)
+            number = existingExpression.evaluate(with: number)
         }
         expression = ArithmeticExpression(number: number, operation: operation)
         newNumber = nil
     }
     
     mutating func toggleSign() {
-        
+        if let number = newNumber {
+            newNumber = -number
+            return
+        }
+        if let number = result {
+            result = -number
+            return
+        }
+        carryingNegative.toggle()
     }
     
     mutating func setPercent() {
+        if let number = newNumber {
+            newNumber = number / 100
+            return
+        }
+        if let number = result {
+            result = number / 100
+            return
+        }
         
     }
     
@@ -75,7 +97,10 @@ struct Calculator {
     }
     
     mutating func evaluate() {
-        
+        guard let number = newNumber, let expressionToEvaluate = expression else { return }
+        result = expressionToEvaluate.evaluate(with: number)
+        newNumber = nil
+        expression = nil
     }
     
     mutating func allClear() {
@@ -93,7 +118,11 @@ struct Calculator {
     }
         
     private func getNumberString(forNumber number: Decimal?, withCommas: Bool = false) -> String {
-        return (withCommas ? number?.formatted(.number) : number.map(String.init)) ?? "0"
+        var numberString = (withCommas ? number?.formatted(.number) : number.map(String.init)) ?? "0"
+        if carryingNegative {
+            numberString.insert("-", at: numberString.startIndex)
+        }
+        return numberString
     }
     
     private func canAddDigit(digit: Digits) -> Bool {
