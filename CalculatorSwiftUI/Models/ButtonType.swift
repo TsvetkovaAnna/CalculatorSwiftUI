@@ -29,7 +29,7 @@ enum ButtonType: Hashable, CustomStringConvertible {
         case .negative:
             return "±"
         case .decimal:
-            return ","
+            return "."
         case .equals:
             return "="
         case .clear:

@@ -19,12 +19,16 @@ extension CalculatorView {
             return calculator.displayText
         }
         
-        var buttonTypes: [[ButtonType]] =
-        [[.allClear, .negative, .percent, .operation(operation: .division)],
-         [.digit(digit: .seven), .digit(digit: .eight), .digit(digit: .nine), .operation(operation: .multiplication)],
-         [.digit(digit: .four), .digit(digit: .five), .digit(digit: .six), .operation(operation: .subtracting)],
-         [.digit(digit: .one), .digit(digit: .two), .digit(digit: .three), .operation(operation: .addition)],
-         [.digit(digit: .zero), .decimal, .equals]]
+        var buttonTypes: [[ButtonType]] {
+            let clearType: ButtonType = calculator.showAllClear ? .allClear : .clear
+            return [
+                [clearType, .negative, .percent, .operation(operation: .division)],
+                [.digit(digit: .seven), .digit(digit: .eight), .digit(digit: .nine), .operation(operation: .multiplication)],
+                [.digit(digit: .four), .digit(digit: .five), .digit(digit: .six), .operation(operation: .subtracting)],
+                [.digit(digit: .one), .digit(digit: .two), .digit(digit: .three), .operation(operation: .addition)],
+                [.digit(digit: .zero), .decimal, .equals]
+            ]
+        }
         
         //MARK: - Actions
         

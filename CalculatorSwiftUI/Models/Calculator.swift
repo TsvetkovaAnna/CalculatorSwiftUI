@@ -10,7 +10,9 @@ import Foundation
 struct Calculator {
     
     private struct ArithmeticExpression: Equatable {
+        
         var number: Decimal
+        
         var operation: ArithmeticOperations
         
         func evaluate(with secondNumber: Decimal) -> Decimal {
@@ -33,11 +35,17 @@ struct Calculator {
         didSet {
             guard newNumber != nil else { return }
             carryingNegative = false
+            carryingDecimal = false
+            carryingZeroCount = 0
+            pressedClear = false
         }
     }
     private var expression: ArithmeticExpression?
     private var result: Decimal?
     private var carryingNegative = false
+    private var carryingDecimal = false
+    private var carryingZeroCount: Int = 0
+    private var pressedClear = false
     
     //MARK: - Computed Properties
     
@@ -48,15 +56,29 @@ struct Calculator {
     // Current Displaying number
     
     private var number: Decimal? {
-        newNumber ?? expression?.number ?? result
+        if pressedClear || carryingDecimal {
+            return newNumber
+        }
+        return newNumber ?? expression?.number ?? result
+    }
+    
+    private var containsDecimal: Bool {
+        return getNumberString(forNumber: number).contains(".")
+    }
+    
+    var showAllClear: Bool {
+        newNumber == nil && expression == nil && result == nil || pressedClear
     }
     
     //MARK: - Operations
     
     mutating func setDigit(digit: Digits) {
-        guard canAddDigit(digit: digit) else { return }
-        let numberString = getNumberString(forNumber: newNumber)
-        newNumber = Decimal(string: numberString.appending("\(digit.rawValue)"))
+        if containsDecimal && digit == .zero {
+            carryingZeroCount += 1
+        } else if canAddDigit(digit: digit) {
+            let numberString = getNumberString(forNumber: newNumber)
+            newNumber = Decimal(string: numberString.appending("\(digit.rawValue)"))
+        }
     }
     
     mutating func setOperation(operation: ArithmeticOperations) {
@@ -93,7 +115,8 @@ struct Calculator {
     }
     
     mutating func setDecimal() {
-        
+        if containsDecimal { return }
+        carryingDecimal = true
     }
     
     mutating func evaluate() {
@@ -104,11 +127,21 @@ struct Calculator {
     }
     
     mutating func allClear() {
-        
+        newNumber = nil
+        expression = nil
+        result = nil
+        carryingNegative = false
+        carryingDecimal = false
+        carryingZeroCount = 0
     }
     
     mutating func clear() {
+        newNumber = nil
+        carryingNegative = false
+        carryingDecimal = false
+        carryingZeroCount = 0
         
+        pressedClear = true
     }
     
     //MARK: - Helpers
@@ -119,9 +152,17 @@ struct Calculator {
         
     private func getNumberString(forNumber number: Decimal?, withCommas: Bool = false) -> String {
         var numberString = (withCommas ? number?.formatted(.number) : number.map(String.init)) ?? "0"
+        
         if carryingNegative {
             numberString.insert("-", at: numberString.startIndex)
         }
+        if carryingDecimal {
+            numberString.insert(".", at: numberString.endIndex)
+        }
+        if carryingZeroCount > 0 {
+            numberString.append(String(repeating: "0", count: carryingZeroCount))
+        }
+        
         return numberString
     }
     
